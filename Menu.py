@@ -1,9 +1,17 @@
-def MenuPrincipal():
+import pymysql
 
+# MENU PRINCIPAL DO PROGRAMA
+def MenuPrincipal():
+      
+      import Limpeza
+      Limpeza.limpar()
+      
       print('-=-'*10)
       print('CRIADOR DE BANCO DE DADOS')
       print('-=-'*10)
-
+      
+      print('\n')#ESAÇO
+      
       print('[1] TESTE DE BANCO\n'
             '[2] CRIAR BANCO\n'                 
             '[3] CRIAR TABELA\n'

@@ -12,7 +12,7 @@ db = 'cadastro'
 #TESTE DE CONEXÃO COM BANCO 
 
 try:
-    db = pymysql.connect(host, user, password, db, port)
+    banco = pymysql.connect(host, user, password, db, port)
     print('CONEXÃO COM O BANCO - OK')
 
 except:
@@ -20,25 +20,25 @@ except:
 
 
 #LOCAÇÃO DE MEMORIA(CARREGAMENTO DO CODÍGO DO BANCO) "QWERY"
-cursor = db.cursor()
+cursor = banco.cursor()
 
-nome_banco = 'cadastro'
+nome_banco = 'chocolate'
 nome_tabela = 'LISTA'
 
 dedb = (f'DROP DATABASE {nome_banco}')
 detb = (F'DROP TABLE {nome_tabela}')
 
-db = (f'CREATE DATABASE{nome_banco}')
-tb = (f'CREATE TABLE{nome_tabela}')
+crdb = (f'CREATE DATABASE {nome_banco}')
+crtb = (f'CREATE TABLE {nome_tabela}')
 
 modb = 'SHOW DATABASES'
 motb = 'SHOW TABLES'
 
-cursor.execute(modb)
+cursor.execute(crdb)
 
 def todosdbs():
     for x in cursor:
-        print(x)
+        print()
 
 def todastbs():
     for x in cursor:
