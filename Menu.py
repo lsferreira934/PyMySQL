@@ -24,8 +24,9 @@ def MenuPrincipal():
       elif opc == 2:
             import CriarBanco
             CriarBanco.criar_banco()
-      #elif opc == 3:
-      #      criar_tabela()
+      elif opc == 3:
+            import CriarTabela
+            CriarTabela.criar_tabela()
       elif opc == 4:
             exit
 
