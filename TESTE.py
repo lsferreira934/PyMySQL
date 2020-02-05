@@ -7,8 +7,22 @@ password = ''
 port = 3306
 banco = 'cadastro'
 
+db = pymysql.connect(host, user, password)
+cursor = db.cursor()
+modb = 'SHOW DATABASES'
+cursor.execute(modb)
+
+print('|TODOS OS BANCOS     |')
+print('-' * 22)
+for x in cursor:
+    x = list(x)
+    x = str(x).strip('[]')
+    print(f'|{x.rstrip().rjust(4).ljust(20).upper()}|')
+    
+    
 
 
+'''
 #TESTE DE CONEXÃO COM BANCO 
 
 try:
@@ -52,7 +66,7 @@ try:
 except:
     print('CONEXÃO COM O BANCO - OFFLINE')
     #db.closse()
-
+'''
 
 
 

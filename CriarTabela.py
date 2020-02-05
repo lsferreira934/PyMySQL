@@ -12,11 +12,12 @@ def criar_tabela():
     print('CRIADOR DE TABELA')
     print('-=-'*10)
 
-    
     #COLETANDO INFORMAÇÕES DE CONEXÃO DO BANCO
     host = str(input('Digite o ip:'))         
     user = str(input('Digite o usuário:'))         
     password = str(input('Digite a password:'))   
+    port = int(input('Digite a porta:'))
+    db = str(input('Informe o banco:'))   
     print('-=-'*10)
 
     sleep(2)
@@ -27,7 +28,7 @@ def criar_tabela():
 
     #TESTE DE CONEXÃO COM BANCO     
     try:    
-        db = pymysql.connect(host, user, password)
+        db = pymysql.connect(host, user, password, db, port)
         cursor = db.cursor()  
         print('-=-'*10)
         print('CONEXÃO COM O BANCO - OK')
@@ -48,16 +49,17 @@ def criar_tabela():
             #FUNÇÃO DE LIMPEZA DA TELA
             import Limpeza
             Limpeza.limpar()
-
+            
+            #MOSTRAR TODAS AS TABELAS
             print('-=-'*10)
             print('LISTAR TABELAS')
             print('-=-'*10)
-            modb = 'SHOW TABLES'
-            cursor.execute(modb)
+            motb = 'SHOW TABLES'
+            cursor.execute(motb)
             for x in cursor:
                 print(x)
             db.close()
-            criar_banco()
+            criar_tabela()
 
         elif opc == 2:
 
@@ -65,23 +67,24 @@ def criar_tabela():
             import Limpeza
             Limpeza.limpar()
             
+            #CRIAR NOVA TABELA
             print('-=-'*10)
-            print('CRIAR BANCOS')
+            print('CRIAR TABELA')
             print('-=-'*10)
-            nomedb = str(input('Digite o nome do seu Banco:'))
-            criardb = (f'CREATE DATABASE {nomedb}\n')
+            nometb = str(input('Digite o nome do sua tabale:'))
+            criartb = (f'CREATE TABLE {nometb}\n')
             
             sleep(1)
             print('CONECTANDO AO BANCO...')
             sleep(1)
-            print(f'CRIANDO NOVO BANCO DE DADOS: {nomedb}...')
+            print(f'CRIANDO NOVA TABELA: {nometb}...')
             sleep(1)
-            print(f'BANCO DE DADOS {nomedb} CRIADO COM SUCESSO!\n')
+            print(f'TABELA {nometb} CRIADA COM SUCESSO!\n')
             sleep(2)
             print('-=-'*10)
-            cursor.execute(criardb)
+            cursor.execute(criartb)
             db.close()
-            criar_banco()
+            criar_tabela()
 
         elif opc == 3:
             
@@ -89,23 +92,24 @@ def criar_tabela():
             import Limpeza
             Limpeza.limpar()
             
+            #EXCLUIR UMA TABELA
             print('-=-'*10)
-            print('DELETAR BANCOS')
+            print('DELETAR TABELA')
             print('-=-'*10)
-            nomedb = str(input('Digite o Banco:'))
-            dedb = (f'DROP DATABASE {nomedb}\n')
+            nometb = str(input('Digite a tabela:'))
+            detb = (f'DROP DATABASE {nometb}\n')
             
             sleep(1)
             print('CONECTANDO AO BANCO...')
             sleep(1)
-            print(f'EXCLUINDO BANCO DE DADOS: {nomedb}...')
+            print(f'EXCLUINDO TABELA: {nometb}...')
             sleep(1)
-            print(f'BANCO DE DADOS {nomedb} EXCUIDO COM SUCESSO!\n')
+            print(f'TABELA {nometb} EXCUIDA COM SUCESSO!\n')
             sleep(2)
             print('-=-'*10)
-            cursor.execute(dedb)
+            cursor.execute(detb)
             db.close()
-            criar_banco()
+            criar_tabela()
 
         elif opc == 4:
             
@@ -113,6 +117,7 @@ def criar_tabela():
             import Limpeza
             Limpeza.limpar()
             
+            #VOLTAR PARA MENU ANTERIOR
             print('VONTANDO PARA O MENU PINCIPAL')
             sleep(1)
             db.close()

@@ -1,15 +1,15 @@
 import pymysql # para o MySQL
 from time import sleep
-
+import Layout
 
 def teste_banco():
     
     import Limpeza
     Limpeza.limpar()
     
-    print('-=-'*10)
+    Layout.linha()
     print('TESTANDO BANCO DE DADOS')
-    print('-=-'*10)
+    Layout.linha()
 
     #COLETANDO INFORMAÇÕES DE CONEXÃO DO BANCO
     host = str(input('Digite o ip:'))         
@@ -17,7 +17,7 @@ def teste_banco():
     password = str(input('Digite a password:'))   
     port = int(input('Digite a porta:'))
     db = str(input('Informe o banco:'))
-    print('-=-'*10)
+    Layout.linha()
 
     sleep(2)
     print('INICIANDO CONEXÃO...')
@@ -28,19 +28,18 @@ def teste_banco():
     #TESTE DE CONEXÃO COM BANCO 
     try:
         db = pymysql.connect(host, user, password, db, port)
-        print('-=-'*10)
+        Layout.linha()
         print('CONEXÃO COM O BANCO - OK')
-        print('-=-'*10)
+        Layout.linha()
         db.close()
         import Menu
         Menu.MenuPrincipal()
 
 
     except:
-        print('-=-'*10)
+        Layout.linha()
         print('CONEXÃO COM O BANCO - FALHA')
-        print('-=-'*10)
-        db.close()
+        Layout.linha()
         import Menu
         Menu.MenuPrincipal()
         
