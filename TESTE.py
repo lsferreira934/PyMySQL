@@ -5,21 +5,22 @@ host = '127.0.0.1'
 user = 'root'
 password = ''
 port = 3306
-banco = 'cadastro'
+db = 'cadastro'
 
-db = pymysql.connect(host, user, password)
+db = pymysql.connect(host, user, password, port, db)
 cursor = db.cursor()
-modb = 'SHOW DATABASES'
-cursor.execute(modb)
 
-print('|TODOS OS BANCOS     |')
+print('LISTAR TABELAS')
+            
+motb = 'SHOW TABLES'
+cursor.execute(motb)
+print('|TODAS AS TABELAS     |')
 print('-' * 22)
-for x in cursor:
-    x = list(x)
-    x = str(x).strip('[]')
-    print(f'|{x.rstrip().rjust(4).ljust(20).upper()}|')
-    
-    
+#for x in cursor:
+#    x = list(x) #CONVERTENDO TULIPAS EM LISTA
+#    x = str(x).strip('[]') #CONVERTENDO LISTA EM STRINGS E REMOVENDO OS COLCHETES 
+#    print(f'|{x.rstrip().rjust(4).ljust(20).upper()}|') #PRINT FORMATADO DOS BANCOS
+
 
 
 '''
